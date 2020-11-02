@@ -1,0 +1,619 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    
+    <!-- head -->
+    <head>
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"/>
+    
+    <meta name="author" content="https://github.com/izzwl">
+    <meta name="description" content="{{meta.description}}" />
+    
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="{{meta.description}}" />
+    
+    <!-- <link rel="shortcut icon" href="" />	 -->
+        
+    <title>
+      {% if title %}
+      {{title}}
+      {% else %}
+      {{event.bride.short_name}} & {{event.groom.short_name}} 
+      {% endif %}
+    </title>
+    
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
+    
+      <!-- Bootstrap CSS File -->
+      <link href="{% static 'vendor/bootstrap-4.5.2-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+      <!-- Libraries CSS Files -->
+      <link href="{% static 'vendor/ionicons-2.0.1/css/ionicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/owl.carousel.min.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/magnific-popup.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/Hover-master/css/hover-min.css' %}" rel="stylesheet">
+    
+      <!-- Main Stylesheet File -->
+      <link href="{% static 'vendor/1_css_style.css' %}" rel="stylesheet">
+    
+      <!-- Responsive css -->
+      <link href="{% static 'vendor/1_css_responsive.css' %}" rel="stylesheet">
+    
+      <!-- Favicon -->
+      <!-- <link rel="shortcut icon" href=""> -->
+      
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <style>
+        #demo {
+          height:100%;
+          position:relative;
+          overflow:hidden;
+        }
+
+
+        .green{
+          background-color:#6fb936;
+        }
+        .thumb{
+            margin-bottom: 30px;
+        }
+        
+        .page-top{
+            margin-top:85px;
+        }
+          
+        img.zoom {
+            width: 100%;
+            height: 200px;
+            border-radius:5px;
+            object-fit:cover;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            -ms-transition: all .3s ease-in-out;
+        }
+        .transition {
+            -webkit-transform: scale(1.2); 
+            -moz-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+        /* .modal-header {
+            border-bottom: none;
+        }
+        .modal-title {
+            color:#000;
+        }
+        .modal-footer{
+          display:none;  
+        } */
+     </style>
+    </head>
+    <body>
+	
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Peringatan Protokol Kesehatan</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              Acara ini diselenggarakan dengan protokol kesehatan yang harus dipatuhi demi mencegah penyebaran virus COVID-19<br>
+              <br>
+              Tanpa mengurangi rasa hormat, para tamu undangan yang bersedia menghadiri acara dimohon kesediannya untuk:<br>
+              <br>
+              1. Menggunakan masker wajah dan/atau transparant face shield (bila memungkinkan).<br>
+              2. Membawa hand sanitizer (untuk meminimalisir antrian cuci tangan).<br>
+              3. Bersedia antre untuk pengecekan suhu tubuh sebelum memasuki venue pernikahan.<br>
+              4. Memberikan selamat dengan cara salam namaste kepada kedua mempelai juga orang tua mempelai.<br>
+              5. Menjaga jarak dengan pengantin dan tamu undangan lain selama acara berlangsung.
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Ok</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <!-- start section navbar -->
+      <nav id="main-nav">
+        <div class="row">
+          <div class="container">
+    
+            <div class="logo">
+              <a href="index.html">
+                <p> 
+                  {{event.bride.short_name}} & {{event.groom.short_name}} 
+                </p>
+              </a>
+            </div>
+    
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+    
+            <ul class="nav-menu list-unstyled">
+              <li><a href="#header" class="smoothScroll">Wedding</a></li>
+              <li><a href="#about" class="smoothScroll">Information</a></li>
+              <li><a href="#portfolio" class="smoothScroll">Gallery</a></li>
+              <!-- <li><a href="#journal" class="smoothScroll">Story</a></li> -->
+              <li><a href="#contact" class="smoothScroll">Attendance</a></li>
+            </ul>
+    
+          </div>
+        </div>
+      </nav>
+      <!-- End section navbar -->
+    
+    
+      <!-- start section header -->
+      <div id="header" class="home"   style="color:#fff;background-size:cover;background-image:url('{{event.image.url}}');background-position: center" >
+    
+        <div class="container" >
+          <div class="header-content" style="justify-content: flex-end; height: 90vh;">
+            <h1> {{event.bride.short_name}} & {{event.groom.short_name}} </h1>
+            <p>{{event.d_ceremony|date:'l, d F Y'}}</p>
+    <!--
+            <ul class="list-unstyled list-social">
+              <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+              <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+              <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+              <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+              <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
+              <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
+            </ul>
+    -->
+          </div>
+        </div>
+      </div>
+      <!-- End section header -->
+      
+      <!-- start section about us -->
+      <!--
+      <div id="about" class="paddsection">
+        <div class="container">
+          <div class="row justify-content-between">
+    
+            <div class="col-lg-12 col-md-12" style="margin-bottom: 25px;">
+              <div class="about-descr">
+                <p class="separator"></p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      -->
+      <!-- end section about us -->
+    
+    
+      <!-- start section about us -->
+      <div id="about" class="paddsection">
+        <div class="container">
+          <div class="row justify-content-between">
+    
+    
+                  <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
+              <div class="about-descr">
+                
+            <div class="div-img-bg">
+                <div class="about-img">
+                  <img src="{{ event.bride.image.url }}" class="img-responsive" alt="me">
+                </div>
+                </div>
+                <p class="p-heading">{{ event.bride.name }}</p>
+                <p class="separator">Putri dari Bapak {{ event.bride.father }} &amp; Ibu {{ event.bride.mother }}</p>
+    
+              </div>
+    
+            </div>
+            
+            <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
+              <div class="about-descr">
+    
+            <div class="div-img-bg">
+                <div class="about-img">
+                  <img src="{{ event.groom.image.url }}" class="img-responsive" alt="me">
+                </div>
+                </div>
+                <p class="p-heading">{{ event.groom.name }}</p>
+                <p class="separator">Putra dari Bapak {{ event.groom.father }} &amp; Ibu {{ event.groom.mother }}</p>
+    
+              </div>
+    
+            </div>
+                    
+          </div>
+        </div>
+      </div>
+      <!-- end section about us -->
+    
+    
+      <!-- start section services -->
+      <div id="services">
+        <div class="container">
+    
+            <div class="services-carousel owl-theme row">
+    
+              <div class="services-block col-md-3 text-center mt-5">
+                <i class="ion-home"></i>
+                <span>VENUE</span>
+                <p class="separator">{{event.venue.name}}</p>
+              </div>
+    
+              <div class="services-block col-md-3 text-center mt-5">
+                <i class="ion-calendar"></i>
+                <span>DATE</span>
+                <p class="separator">{{event.d_ceremony|date:'l, d F Y '}}</p>
+              </div>
+    
+              <div class="services-block col-md-3 text-center mt-5">
+                <i class="ion-ios-time"></i>
+                <span>CEREMONY</span>
+                <p class="separator">{{event.p_ceremony}}</p>
+              </div>
+    
+    
+              <div class="services-block col-md-3 text-center mt-5">
+                <i class="ion-ios-time"></i>
+                <span>RECEPTION</span>
+                <p class="separator">{{event.p_reception}}</p>
+              </div>
+    
+            </div>
+    
+        </div>
+    
+      </div>
+      <!-- end section services -->
+      
+      <div id="services">
+        <div class="container">
+          <span>Map Link : <a href="{{event.venue.gmap_url}}" target="_blank" style="color: #ea9999; font-weight: 700;">{{event.venue.name}}<br><br></a></span><span>{{event.venue.address}}<br><br></span>
+          <iframe src="{{event.venue.gmap_embed}}" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+      </div>
+      
+      
+      <!-- countdown -->
+            <div class="container text-center" >
+              <span><br><br>COUNTDOWN<br><br></span>
+              <div id="countdown"></div>
+            </div>
+            <style>
+              #countdown{
+                display: block;
+                margin-bottom: 25px;
+                color: #898989;
+              }
+              div#countdown span {
+                  padding: 6px;
+                  display: inline-block;
+                  font-size: 20px;
+              }
+              #countdown .hari {
+                  display: block;
+                  width: 100%;
+                  font-size: 30px;
+              }
+            </style>
+            <script>
+            var countDownDate = new Date("{{event.dt_countdown|date:'M d, Y H:i:s'}}").getTime();
+    
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            
+              // Get todays date and time
+              var now = new Date().getTime();
+            
+              // Find the distance between now and the count down date
+              var distance = countDownDate - now;
+            
+              // Time calculations for days, hours, minutes and seconds
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+              // Display the result in the element with id="demo"
+              document.getElementById("countdown").innerHTML = "<span class='hari'> "+days + " HARI </span><span> "+hours + " JAM </span><span> "+ minutes + " MENIT </span><span> " + seconds + " DETIK </span>";
+            
+              // If the count down is finished, write some text 
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Happily Ever After";
+              }
+            }, 1000);
+            </script>
+            <!-- countdown -->
+      
+      
+      <div class="container text-center">
+      <div class="row">
+        <div class="col-sm-12">
+          <a href="{{event.gcal_link}}" target="_blank"><button type="button" class="btn btn-success">Add to Calendar</button></a>
+        </div>
+      </div>
+    </div>
+    
+    
+      <!-- start section portfolio -->
+      <div id="portfolio" class="text-center paddsection">
+    
+        <div class="container">
+          <div class="section-title text-center">
+            <h2>Gallery<br><br></h2>
+            </div>
+        </div>
+    
+        <div class="container page-top">
+          <div class="row">
+              {% for gallery in event.eventgallery_set.all %}
+              <div class="col-lg-4 col-md-6 col-xs-12 thumb">
+                  <a href="{{gallery.image.url}}" class="fancybox" rel="ligthbox">
+                      <img  src="{{gallery.image.url}}" class="zoom img-fluid "  alt="">
+                  </a>
+              </div>
+              {% endfor %}
+           </div>
+        </div>
+      </div>
+      <!-- End section portfolio -->
+    
+    
+      <!-- start section journal -->
+      <!-- <div id="journal" class="text-left paddsection">
+    
+        <div class="container">
+          <div class="section-title text-center">
+            <h2>story</h2>
+          </div>
+        </div>
+    
+        <div class="container">
+          <div class="journal-block">
+            <div class="row">
+    
+              <div class="col-lg-12 col-md-6">
+                <div class="journal-info">
+                  <div class="journal-txt">
+                    <p class="separator" align="justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br>
+                    <br>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </div> -->
+      <!-- End section journal -->
+    
+    
+      <!-- start sectoion contact -->
+      <div id="contact" class="paddsection">
+        <div class="container">
+          <div class="contact-block1">
+            <div class="row">
+    
+              <div class="col-lg-6">
+                <div class="contact-contact">
+    
+                  <h2 class="mb-30">GUEST ATTENDANCE</h2>
+    
+                  <ul class="contact-details">
+                    <li><span>{{event.venue.name}}</span></li>
+                    <li><span>{{event.d_ceremony|date:'l, d F Y '}}</span></li>
+                    <li><span>Ceremony : {{event.p_ceremony}}</span></li>
+                    <li><span>Reception : {{event.p_reception}}</span></li>
+                  </ul>
+    
+                </div>
+              </div>
+    
+              <div class="col-lg-6">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-light" role="alert">
+                  {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <form  method="post" role="form" class="contactForm">
+                  {% csrf_token %}
+                  <!-- <input type="hidden" name="_token" value="5ssn5tC9g2J6I2BIdzh4wqQ4H3w271NDVYVDp1Um">	            <input type="hidden" name="idinvitation" value="74"/> -->
+                  <div class="row">
+    
+    <!--
+                    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                    <div id="errormessage"></div>
+    -->
+    
+                    <div class="col-lg-6">
+                      <div class="form-group contact-block1">
+    <!--                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> -->
+                            <!-- <input id="name" type="text" placeholder="Your Name" class="form-control" name="name"  required> -->
+                            {{att_form.name}}
+                            <div class="validation"></div>
+
+                      </div>
+                    </div>
+    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+    <!--                     <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" /> -->
+                              <!-- <input id="phone" type="tel" placeholder="Your Phone" class="form-control" name="phone" > -->
+                              {{att_form.phone}}
+                              <div class="validation"></div>
+                      </div>
+                    </div>
+    
+                    <div class="col-lg-12">
+                      <div class="form-group">
+    <!--                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
+                              <!-- <input id="email" type="email" placeholder="Your Email" class="form-control" name="email"  required> -->
+                              {{att_form.email}}
+                              <div class="validation"></div>
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-12">
+                      <div class="form-group">
+    <!--                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
+              <!-- <textarea id="wishes" placeholder="Your Wishes" class="form-control" name="wishes" required rows="3"></textarea>		 -->
+                          {{att_form.whises}}
+                            <div class="validation"></div>
+                      </div>
+                    </div> 
+    
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="wishes">Will you be coming?</label>
+                        <div class="radio">
+                        {% for radio in att_form.is_attend %}
+                            {{ radio }}
+                        {% endfor %}
+    <!--                       <label><input type="radio" name="attend" value="2"> Maybe</label> -->
+                          <div class="validation"></div>
+                        </div>
+                        <div class="custom-person-block">
+                          <label for="wishes">Guest</label>
+
+                            {{att_form.guest}}
+                        </div>
+    
+                      </div>
+                      
+                      
+                      
+                    </div>
+    
+                    <div class="col-lg-12" style="padding-bottom: 10px;">
+    <!--                   <input type="submit" class="btn btn-defeault btn-send" value="Send message"> -->
+                    <button type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                    </div>
+    
+                  </div>
+                </form>
+                
+                            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- start sectoion contact -->
+    
+    
+      <!-- start section footer -->
+      <div id="footer" class="text-center">
+        <div class="container">
+          <div class="socials-media text-center">
+                <p>WEDDING INVITATION by<br>IZZWL<br><a href="https://github.com/izzwl/" target="_blank"></a>
+                          </div>
+    
+          <!-- <p>&copy; Copyrights Izzwl. All rights reserved.</p> -->
+    
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Folio
+            -->
+    
+            <!-- Designed by <a href="https://bootstrapmade.com/" target="_blank">BootstrapMade</a> -->
+          </div>
+    
+    
+        </div>
+      </div>
+      <!-- End section footer -->
+    
+      <!-- JavaScript Libraries -->
+
+      <!-- Contact Form JavaScript File -->
+    <!--   <script src="contactform/contactform.js"></script> -->
+    
+      <!-- Template Main Javascript File -->
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+      <script src="{% static 'vendor/themes_1_js_main.js' %}"></script>
+    <!-- Modal / PopUp -->
+      <script>
+          setTimeout(function(){
+            $(document).ready(function(){
+              $('#myModal').modal('show');
+            })		    
+          }, 5000);
+          
+          $('#myModal').on('hidden.bs.modal', function () {
+            $('#myModal1').modal('show');
+        });
+        </script>
+        <script>
+    
+            $('input:radio[name="attend"]').change(function(){
+                if($(this).is(":checked")){
+    
+                    var attend = parseInt($("input[name='attend']:checked").val());
+    
+                    if (attend == 1) {
+                        $( ".custom-person-block" ).css("display", "block");
+                    } else {
+                        $( ".custom-person-block" ).css("display", "none");
+                    }
+    
+                }
+            });
+    
+            $( ".select-person" ).change(function() {
+                var selectedValue = $(this).children("option:selected").val();
+    
+                if (selectedValue == 'other') {
+                    $( ".custom-person" ).css("display", "block");
+                } else {
+                    $( ".custom-person" ).css("display", "none");
+                }
+    
+            });
+    
+   
+          $(document).ready(function(){
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+            
+            $(".zoom").hover(function(){
+              $(this).addClass('transition');
+            }, function(){
+              $(this).removeClass('transition');
+            });
+        });
+      </script>
+      <script>
+        if ( window.history.replaceState ) {
+          window.history.replaceState( null, null, window.location.href );
+        }
+        </script>
+    </body>
+
+</html>

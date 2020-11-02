@@ -1,0 +1,7 @@
+**/.vscode
+**/_dbdump
+**/media
+*.pyc
+*.pdf
+db.sqlite3
+*.sqlite3
