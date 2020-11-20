@@ -94,9 +94,10 @@
     </head>
     <body>
       <!-- <embed src="/media/mp3/EveryDayILoveYou.mp3" loop="true" autostart="true" width="0" height="0" style="display: hidden;"> -->
-      <audio loop autoplay>
+      <audio id='song' loop>
         <source src="/media/mp3/EveryDayILoveYou.mp3" type="audio/mpeg">
       </audio> 
+      <!-- <embed id="background-audio" src="/media/mp3/EveryDayILoveYou.mp3" autostart="1"></embed> -->
       <!-- The Modal -->
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -515,6 +516,45 @@
                             
               </div>
             </div>
+            <div class="row wishes-message">
+              <div class="col-12" style="padding-bottom: 10px;">
+
+                      <!-- Fluid width widget -->        
+                    <div class="panel panel-default" style="width:100%">
+                      <div class="panel-heading">
+                          <h2 class="panel-title" style="margin:25px 0px;">
+                              <!-- <span class="glyphicon glyphicon-comment"></span>  -->
+                              CONGRATULATIONS & WISHES
+                          </h2>
+                      </div>
+                      <div class="panel-body" style="height: 58vh; overflow-y: scroll; margin-right: 20px;">
+                          <ul class="media-list">
+                            {% for v in event.attendance_set.all %}
+                              <li class="media">
+                                  <!-- <div class="media-left">
+                                      <img src="http://placehold.it/60x60" class="img-circle">
+                                  </div> -->
+                                  <div class="media-body">
+                                      <h4 class="media-heading">
+                                          {{ v.name }}
+                                          <br>
+                                          <small>
+                                              sent you congratulations
+                                          </small>
+                                      </h4>
+                                      <p style="margin: 10px 0 30px 0;;">
+                                          {{ v.whises }}
+                                      </p>
+                                  </div>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                          <!-- <a href="#" class="btn btn-default btn-block">More Events »</a> -->
+                      </div>
+                  </div>
+                  <!-- End fluid width widget --> 
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -616,6 +656,10 @@
         if ( window.history.replaceState ) {
           window.history.replaceState( null, null, window.location.href );
         }
+
+        $('#myModal').on('hidden.bs.modal', function (e) {
+          document.getElementById('song').play();
+        })
         </script>
     </body>
 

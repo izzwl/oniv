@@ -11,7 +11,7 @@ def index(request,undangan,template='ui/base.html'):
     event = Event.objects.select_related(
         'bride','groom','venue',
     ).prefetch_related(
-        'eventgallery_set'
+        'eventgallery_set','attendance_set',
     ).get(name=undangan)
 
     att_form = AttendanceForm(request.POST or None,instance=None,initial={'is_attend':True})
