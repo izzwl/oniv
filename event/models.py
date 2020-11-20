@@ -127,7 +127,8 @@ class Attendance(models.Model):
     is_attend = models.BooleanField(default=False)
     guest = models.PositiveIntegerField(default=1)
 
-
+    class Meta:
+        ordering = ['-pk']
 
 
 
