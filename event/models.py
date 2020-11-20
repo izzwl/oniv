@@ -89,7 +89,7 @@ class Event(models.Model):
     image_width = models.PositiveIntegerField(default=0)
     image_height = models.PositiveIntegerField(default=0)
     dt_add = models.DateTimeField(auto_now_add=True)
-
+    meta_image = models.ImageField(upload_to=upload_event_image, blank=True, null=True, default=None)
     def __str__(self):
         return self.bride.name + " - " + self.groom.name
 

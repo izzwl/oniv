@@ -12,10 +12,27 @@
     <!-- meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="{{meta.description}}" />
+    <!-- <meta name="description" content="{{meta.description}}" /> -->
     
     <!-- <link rel="shortcut icon" href="" />	 -->
-        
+    <meta name="title" content="{{event.bride.short_name}} & {{event.groom.short_name}} Wedding">
+    <meta name="description" content="Spesial mengundang untuk menghadiri pernikahan kami. {{event.bride.short_name}} & {{event.groom.short_name}}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://meinvited.com/">
+    <meta property="og:title" content="{{event.bride.short_name}} & {{event.groom.short_name}} Wedding">
+    <meta property="og:description" content="Spesial mengundang untuk menghadiri pernikahan kami. {{event.bride.short_name}} & {{event.groom.short_name}}">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{event.meta_image.url}}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://meinvited.com/">
+    <meta property="twitter:title" content="{{event.bride.short_name}} & {{event.groom.short_name}} Wedding">
+    <meta property="twitter:description" content="Spesial mengundang untuk menghadiri pernikahan kami. {{event.bride.short_name}} & {{event.groom.short_name}}">
+    <meta property="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{event.meta_image.url}}">
+
+    
     <title>
       {% if title %}
       {{title}}
